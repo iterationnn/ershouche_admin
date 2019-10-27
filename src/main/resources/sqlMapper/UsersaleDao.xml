@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.UsersaleDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.Usersale">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="saleCarId" jdbcType="BIGINT" property="saleCarId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="uptime" jdbcType="DATE" property="uptime" />
+    <result column="saleCityId" jdbcType="BIGINT" property="saleCityId" />
+    <result column="mileage" jdbcType="DECIMAL" property="mileage" />
+    <result column="isgo" jdbcType="BIT" property="isgo" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, saleCarId, phone, uptime, saleCityId, mileage, isgo, price, userid, picture
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from usersale
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from usersale
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.Usersale">
+    insert into usersale (id, saleCarId, phone, 
+      uptime, saleCityId, mileage, 
+      isgo, price, userid, picture
+      )
+    values (#{id,jdbcType=BIGINT}, #{saleCarId,jdbcType=BIGINT}, #{phone,jdbcType=VARCHAR}, 
+      #{uptime,jdbcType=DATE}, #{saleCityId,jdbcType=BIGINT}, #{mileage,jdbcType=DECIMAL}, 
+      #{isgo,jdbcType=BIT}, #{price,jdbcType=DECIMAL}, #{userid,jdbcType=BIGINT}, #{picture,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.Usersale">
+    insert into usersale
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="saleCarId != null">
+        saleCarId,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="uptime != null">
+        uptime,
+      </if>
+      <if test="saleCityId != null">
+        saleCityId,
+      </if>
+      <if test="mileage != null">
+        mileage,
+      </if>
+      <if test="isgo != null">
+        isgo,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="saleCarId != null">
+        #{saleCarId,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="uptime != null">
+        #{uptime,jdbcType=DATE},
+      </if>
+      <if test="saleCityId != null">
+        #{saleCityId,jdbcType=BIGINT},
+      </if>
+      <if test="mileage != null">
+        #{mileage,jdbcType=DECIMAL},
+      </if>
+      <if test="isgo != null">
+        #{isgo,jdbcType=BIT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.Usersale">
+    update usersale
+    <set>
+      <if test="saleCarId != null">
+        saleCarId = #{saleCarId,jdbcType=BIGINT},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="uptime != null">
+        uptime = #{uptime,jdbcType=DATE},
+      </if>
+      <if test="saleCityId != null">
+        saleCityId = #{saleCityId,jdbcType=BIGINT},
+      </if>
+      <if test="mileage != null">
+        mileage = #{mileage,jdbcType=DECIMAL},
+      </if>
+      <if test="isgo != null">
+        isgo = #{isgo,jdbcType=BIT},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.Usersale">
+    update usersale
+    set saleCarId = #{saleCarId,jdbcType=BIGINT},
+      phone = #{phone,jdbcType=VARCHAR},
+      uptime = #{uptime,jdbcType=DATE},
+      saleCityId = #{saleCityId,jdbcType=BIGINT},
+      mileage = #{mileage,jdbcType=DECIMAL},
+      isgo = #{isgo,jdbcType=BIT},
+      price = #{price,jdbcType=DECIMAL},
+      userid = #{userid,jdbcType=BIGINT},
+      picture = #{picture,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

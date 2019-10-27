@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.SeriesDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.Series">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="brandId" jdbcType="BIGINT" property="brandId" />
+    <result column="seriesName" jdbcType="VARCHAR" property="seriesName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, brandId, seriesName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from series
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from series
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.Series">
+    insert into series (id, brandId, seriesName
+      )
+    values (#{id,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{seriesName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.Series">
+    insert into series
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="brandId != null">
+        brandId,
+      </if>
+      <if test="seriesName != null">
+        seriesName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="seriesName != null">
+        #{seriesName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.Series">
+    update series
+    <set>
+      <if test="brandId != null">
+        brandId = #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="seriesName != null">
+        seriesName = #{seriesName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.Series">
+    update series
+    set brandId = #{brandId,jdbcType=BIGINT},
+      seriesName = #{seriesName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.ImgDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.Img">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="carDetailId" jdbcType="BIGINT" property="carDetailId" />
+    <result column="carImg" jdbcType="VARCHAR" property="carImg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, carDetailId, carImg
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from img
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from img
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.Img">
+    insert into img (id, carDetailId, carImg
+      )
+    values (#{id,jdbcType=BIGINT}, #{carDetailId,jdbcType=BIGINT}, #{carImg,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.Img">
+    insert into img
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="carDetailId != null">
+        carDetailId,
+      </if>
+      <if test="carImg != null">
+        carImg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carDetailId != null">
+        #{carDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="carImg != null">
+        #{carImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.Img">
+    update img
+    <set>
+      <if test="carDetailId != null">
+        carDetailId = #{carDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="carImg != null">
+        carImg = #{carImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.Img">
+    update img
+    set carDetailId = #{carDetailId,jdbcType=BIGINT},
+      carImg = #{carImg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

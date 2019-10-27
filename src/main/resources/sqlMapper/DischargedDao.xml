@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.DischargedDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.Discharged">
+    <id column="Id" jdbcType="BIGINT" property="id" />
+    <result column="dcName" jdbcType="VARCHAR" property="dcName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, dcName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from discharged
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from discharged
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.Discharged">
+    insert into discharged (Id, dcName)
+    values (#{id,jdbcType=BIGINT}, #{dcName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.Discharged">
+    insert into discharged
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="dcName != null">
+        dcName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="dcName != null">
+        #{dcName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.Discharged">
+    update discharged
+    <set>
+      <if test="dcName != null">
+        dcName = #{dcName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.Discharged">
+    update discharged
+    set dcName = #{dcName,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

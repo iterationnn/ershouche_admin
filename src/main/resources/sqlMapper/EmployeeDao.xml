@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.EmployeeDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.Employee">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="realName" jdbcType="VARCHAR" property="realName" />
+    <result column="userId" jdbcType="BIGINT" property="userId" />
+    <result column="postId" jdbcType="TINYINT" property="postId" />
+    <result column="departmentId" jdbcType="TINYINT" property="departmentId" />
+    <result column="enterDate" jdbcType="DATE" property="enterDate" />
+    <result column="isLeave" jdbcType="TINYINT" property="isLeave" />
+    <result column="leaveDate" jdbcType="DATE" property="leaveDate" />
+    <result column="createBy" jdbcType="BIGINT" property="createBy" />
+    <result column="creationDate" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="modifyBy" jdbcType="BIGINT" property="modifyBy" />
+    <result column="modifyDate" jdbcType="TIMESTAMP" property="modifyDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, realName, userId, postId, departmentId, enterDate, isLeave, leaveDate, createBy, 
+    creationDate, modifyBy, modifyDate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employee
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from employee
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.Employee">
+    insert into employee (id, realName, userId, 
+      postId, departmentId, enterDate, 
+      isLeave, leaveDate, createBy, 
+      creationDate, modifyBy, modifyDate
+      )
+    values (#{id,jdbcType=BIGINT}, #{realName,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, 
+      #{postId,jdbcType=TINYINT}, #{departmentId,jdbcType=TINYINT}, #{enterDate,jdbcType=DATE}, 
+      #{isLeave,jdbcType=TINYINT}, #{leaveDate,jdbcType=DATE}, #{createBy,jdbcType=BIGINT}, 
+      #{creationDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=BIGINT}, #{modifyDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.Employee">
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="realName != null">
+        realName,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="postId != null">
+        postId,
+      </if>
+      <if test="departmentId != null">
+        departmentId,
+      </if>
+      <if test="enterDate != null">
+        enterDate,
+      </if>
+      <if test="isLeave != null">
+        isLeave,
+      </if>
+      <if test="leaveDate != null">
+        leaveDate,
+      </if>
+      <if test="createBy != null">
+        createBy,
+      </if>
+      <if test="creationDate != null">
+        creationDate,
+      </if>
+      <if test="modifyBy != null">
+        modifyBy,
+      </if>
+      <if test="modifyDate != null">
+        modifyDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="postId != null">
+        #{postId,jdbcType=TINYINT},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=TINYINT},
+      </if>
+      <if test="enterDate != null">
+        #{enterDate,jdbcType=DATE},
+      </if>
+      <if test="isLeave != null">
+        #{isLeave,jdbcType=TINYINT},
+      </if>
+      <if test="leaveDate != null">
+        #{leaveDate,jdbcType=DATE},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.Employee">
+    update employee
+    <set>
+      <if test="realName != null">
+        realName = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="postId != null">
+        postId = #{postId,jdbcType=TINYINT},
+      </if>
+      <if test="departmentId != null">
+        departmentId = #{departmentId,jdbcType=TINYINT},
+      </if>
+      <if test="enterDate != null">
+        enterDate = #{enterDate,jdbcType=DATE},
+      </if>
+      <if test="isLeave != null">
+        isLeave = #{isLeave,jdbcType=TINYINT},
+      </if>
+      <if test="leaveDate != null">
+        leaveDate = #{leaveDate,jdbcType=DATE},
+      </if>
+      <if test="createBy != null">
+        createBy = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null">
+        creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        modifyBy = #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null">
+        modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.Employee">
+    update employee
+    set realName = #{realName,jdbcType=VARCHAR},
+      userId = #{userId,jdbcType=BIGINT},
+      postId = #{postId,jdbcType=TINYINT},
+      departmentId = #{departmentId,jdbcType=TINYINT},
+      enterDate = #{enterDate,jdbcType=DATE},
+      isLeave = #{isLeave,jdbcType=TINYINT},
+      leaveDate = #{leaveDate,jdbcType=DATE},
+      createBy = #{createBy,jdbcType=BIGINT},
+      creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      modifyBy = #{modifyBy,jdbcType=BIGINT},
+      modifyDate = #{modifyDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

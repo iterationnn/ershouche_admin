@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.BrandDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.Brand">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="brandName" jdbcType="VARCHAR" property="brandName" />
+    <result column="capital" jdbcType="VARCHAR" property="capital" />
+    <result column="carLogo" jdbcType="VARCHAR" property="carLogo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, brandName, capital, carLogo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from brand
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from brand
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.Brand">
+    insert into brand (id, brandName, capital, 
+      carLogo)
+    values (#{id,jdbcType=BIGINT}, #{brandName,jdbcType=VARCHAR}, #{capital,jdbcType=VARCHAR}, 
+      #{carLogo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.Brand">
+    insert into brand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="brandName != null">
+        brandName,
+      </if>
+      <if test="capital != null">
+        capital,
+      </if>
+      <if test="carLogo != null">
+        carLogo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="capital != null">
+        #{capital,jdbcType=VARCHAR},
+      </if>
+      <if test="carLogo != null">
+        #{carLogo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.Brand">
+    update brand
+    <set>
+      <if test="brandName != null">
+        brandName = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="capital != null">
+        capital = #{capital,jdbcType=VARCHAR},
+      </if>
+      <if test="carLogo != null">
+        carLogo = #{carLogo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.Brand">
+    update brand
+    set brandName = #{brandName,jdbcType=VARCHAR},
+      capital = #{capital,jdbcType=VARCHAR},
+      carLogo = #{carLogo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.RecommendDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.Recommend">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="carDetailId" jdbcType="BIGINT" property="carDetailId" />
+    <result column="categoryId" jdbcType="TINYINT" property="categoryId" />
+    <result column="sortId" jdbcType="TINYINT" property="sortId" />
+    <result column="isDelete" jdbcType="BIT" property="isDelete" />
+    <result column="onShowTime" jdbcType="TIMESTAMP" property="onShowTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, carDetailId, categoryId, sortId, isDelete, onShowTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from recommend
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from recommend
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.Recommend">
+    insert into recommend (id, carDetailId, categoryId, 
+      sortId, isDelete, onShowTime
+      )
+    values (#{id,jdbcType=BIGINT}, #{carDetailId,jdbcType=BIGINT}, #{categoryId,jdbcType=TINYINT}, 
+      #{sortId,jdbcType=TINYINT}, #{isDelete,jdbcType=BIT}, #{onShowTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.Recommend">
+    insert into recommend
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="carDetailId != null">
+        carDetailId,
+      </if>
+      <if test="categoryId != null">
+        categoryId,
+      </if>
+      <if test="sortId != null">
+        sortId,
+      </if>
+      <if test="isDelete != null">
+        isDelete,
+      </if>
+      <if test="onShowTime != null">
+        onShowTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carDetailId != null">
+        #{carDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=TINYINT},
+      </if>
+      <if test="sortId != null">
+        #{sortId,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="onShowTime != null">
+        #{onShowTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.Recommend">
+    update recommend
+    <set>
+      <if test="carDetailId != null">
+        carDetailId = #{carDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryId != null">
+        categoryId = #{categoryId,jdbcType=TINYINT},
+      </if>
+      <if test="sortId != null">
+        sortId = #{sortId,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null">
+        isDelete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="onShowTime != null">
+        onShowTime = #{onShowTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.Recommend">
+    update recommend
+    set carDetailId = #{carDetailId,jdbcType=BIGINT},
+      categoryId = #{categoryId,jdbcType=TINYINT},
+      sortId = #{sortId,jdbcType=TINYINT},
+      isDelete = #{isDelete,jdbcType=BIT},
+      onShowTime = #{onShowTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.CarDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.Car">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="carName" jdbcType="VARCHAR" property="carName" />
+    <result column="brandId" jdbcType="BIGINT" property="brandId" />
+    <result column="seriesId" jdbcType="BIGINT" property="seriesId" />
+    <result column="colorId" jdbcType="BIGINT" property="colorId" />
+    <result column="dpId" jdbcType="BIGINT" property="dpId" />
+    <result column="dcId" jdbcType="BIGINT" property="dcId" />
+    <result column="levelId" jdbcType="BIGINT" property="levelId" />
+    <result column="bsBox" jdbcType="VARCHAR" property="bsBox" />
+    <result column="driver" jdbcType="VARCHAR" property="driver" />
+    <result column="seatNum" jdbcType="VARCHAR" property="seatNum" />
+    <result column="energyId" jdbcType="BIGINT" property="energyId" />
+    <result column="stId" jdbcType="BIGINT" property="stId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, carName, brandId, seriesId, colorId, dpId, dcId, levelId, bsBox, driver, seatNum, 
+    energyId, stId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from car
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from car
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.Car">
+    insert into car (id, carName, brandId, 
+      seriesId, colorId, dpId, 
+      dcId, levelId, bsBox, 
+      driver, seatNum, energyId, 
+      stId)
+    values (#{id,jdbcType=BIGINT}, #{carName,jdbcType=VARCHAR}, #{brandId,jdbcType=BIGINT}, 
+      #{seriesId,jdbcType=BIGINT}, #{colorId,jdbcType=BIGINT}, #{dpId,jdbcType=BIGINT}, 
+      #{dcId,jdbcType=BIGINT}, #{levelId,jdbcType=BIGINT}, #{bsBox,jdbcType=VARCHAR}, 
+      #{driver,jdbcType=VARCHAR}, #{seatNum,jdbcType=VARCHAR}, #{energyId,jdbcType=BIGINT}, 
+      #{stId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.Car">
+    insert into car
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="carName != null">
+        carName,
+      </if>
+      <if test="brandId != null">
+        brandId,
+      </if>
+      <if test="seriesId != null">
+        seriesId,
+      </if>
+      <if test="colorId != null">
+        colorId,
+      </if>
+      <if test="dpId != null">
+        dpId,
+      </if>
+      <if test="dcId != null">
+        dcId,
+      </if>
+      <if test="levelId != null">
+        levelId,
+      </if>
+      <if test="bsBox != null">
+        bsBox,
+      </if>
+      <if test="driver != null">
+        driver,
+      </if>
+      <if test="seatNum != null">
+        seatNum,
+      </if>
+      <if test="energyId != null">
+        energyId,
+      </if>
+      <if test="stId != null">
+        stId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carName != null">
+        #{carName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="seriesId != null">
+        #{seriesId,jdbcType=BIGINT},
+      </if>
+      <if test="colorId != null">
+        #{colorId,jdbcType=BIGINT},
+      </if>
+      <if test="dpId != null">
+        #{dpId,jdbcType=BIGINT},
+      </if>
+      <if test="dcId != null">
+        #{dcId,jdbcType=BIGINT},
+      </if>
+      <if test="levelId != null">
+        #{levelId,jdbcType=BIGINT},
+      </if>
+      <if test="bsBox != null">
+        #{bsBox,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null">
+        #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="seatNum != null">
+        #{seatNum,jdbcType=VARCHAR},
+      </if>
+      <if test="energyId != null">
+        #{energyId,jdbcType=BIGINT},
+      </if>
+      <if test="stId != null">
+        #{stId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.Car">
+    update car
+    <set>
+      <if test="carName != null">
+        carName = #{carName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null">
+        brandId = #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="seriesId != null">
+        seriesId = #{seriesId,jdbcType=BIGINT},
+      </if>
+      <if test="colorId != null">
+        colorId = #{colorId,jdbcType=BIGINT},
+      </if>
+      <if test="dpId != null">
+        dpId = #{dpId,jdbcType=BIGINT},
+      </if>
+      <if test="dcId != null">
+        dcId = #{dcId,jdbcType=BIGINT},
+      </if>
+      <if test="levelId != null">
+        levelId = #{levelId,jdbcType=BIGINT},
+      </if>
+      <if test="bsBox != null">
+        bsBox = #{bsBox,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null">
+        driver = #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="seatNum != null">
+        seatNum = #{seatNum,jdbcType=VARCHAR},
+      </if>
+      <if test="energyId != null">
+        energyId = #{energyId,jdbcType=BIGINT},
+      </if>
+      <if test="stId != null">
+        stId = #{stId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.Car">
+    update car
+    set carName = #{carName,jdbcType=VARCHAR},
+      brandId = #{brandId,jdbcType=BIGINT},
+      seriesId = #{seriesId,jdbcType=BIGINT},
+      colorId = #{colorId,jdbcType=BIGINT},
+      dpId = #{dpId,jdbcType=BIGINT},
+      dcId = #{dcId,jdbcType=BIGINT},
+      levelId = #{levelId,jdbcType=BIGINT},
+      bsBox = #{bsBox,jdbcType=VARCHAR},
+      driver = #{driver,jdbcType=VARCHAR},
+      seatNum = #{seatNum,jdbcType=VARCHAR},
+      energyId = #{energyId,jdbcType=BIGINT},
+      stId = #{stId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

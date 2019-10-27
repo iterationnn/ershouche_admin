@@ -1,0 +1,42 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /che168_admin
+spring:
+  profiles:
+    active: dev
+  datasource:
+    name: druidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/db_1?serverTimezone=UTC
+    username: root
+    password: 123456
+    #type: com.alibaba.druid.pool.DruidDataSource
+    #druid相关配置
+    druid: 
+      initial-size: 1  # 初始化大小
+      min-idle: 1  # 最小
+      max-active: 100  # 最大
+      max-wait: 60000  # 连接超时时间
+      filters: stat,wall  # 配置监控统计拦截的filters，'stat'用于sql监控，'wall'用于防火墙
+  cache:
+    type: redis
+    redis:
+      #time-to-live: 600000 #缓存超时时间ms
+      cache-null-values: false #是否缓存空值
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    #password: 
+mybatis:
+  mapper-locations: classpath:sqlMapper/*.xml
+  type-aliases-package: com.kgc.che168_admin.pojo
+logging:
+  level:
+    com.kgc.dao: debug
+sms: 
+  tencent:
+    appid: 1400178650
+    appkey: 3bde454ff8d50f632ec265572a6e52a5
+   
+    

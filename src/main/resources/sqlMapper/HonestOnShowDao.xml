@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.HonestOnShowDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.HonestOnShow">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="brandName" jdbcType="VARCHAR" property="brandName" />
+    <result column="seriesName" jdbcType="VARCHAR" property="seriesName" />
+    <result column="carName" jdbcType="VARCHAR" property="carName" />
+    <result column="mileage" jdbcType="DECIMAL" property="mileage" />
+    <result column="productYear" jdbcType="DATE" property="productYear" />
+    <result column="cityName" jdbcType="VARCHAR" property="cityName" />
+    <result column="isHonest" jdbcType="BIT" property="isHonest" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="promotTime" jdbcType="TIMESTAMP" property="promotTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.HonestOnShow">
+    insert into honestOnShow (id, brandName, seriesName, 
+      carName, mileage, productYear, 
+      cityName, isHonest, price, 
+      picture, createTime, promotTime
+      )
+    values (#{id,jdbcType=BIGINT}, #{brandName,jdbcType=VARCHAR}, #{seriesName,jdbcType=VARCHAR}, 
+      #{carName,jdbcType=VARCHAR}, #{mileage,jdbcType=DECIMAL}, #{productYear,jdbcType=DATE}, 
+      #{cityName,jdbcType=VARCHAR}, #{isHonest,jdbcType=BIT}, #{price,jdbcType=DECIMAL}, 
+      #{picture,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{promotTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.HonestOnShow">
+    insert into honestOnShow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="brandName != null">
+        brandName,
+      </if>
+      <if test="seriesName != null">
+        seriesName,
+      </if>
+      <if test="carName != null">
+        carName,
+      </if>
+      <if test="mileage != null">
+        mileage,
+      </if>
+      <if test="productYear != null">
+        productYear,
+      </if>
+      <if test="cityName != null">
+        cityName,
+      </if>
+      <if test="isHonest != null">
+        isHonest,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="promotTime != null">
+        promotTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="seriesName != null">
+        #{seriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="carName != null">
+        #{carName,jdbcType=VARCHAR},
+      </if>
+      <if test="mileage != null">
+        #{mileage,jdbcType=DECIMAL},
+      </if>
+      <if test="productYear != null">
+        #{productYear,jdbcType=DATE},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="isHonest != null">
+        #{isHonest,jdbcType=BIT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="promotTime != null">
+        #{promotTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

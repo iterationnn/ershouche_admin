@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.BannerDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.Banner">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="isShow" jdbcType="BIT" property="isShow" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="pictureName" jdbcType="VARCHAR" property="pictureName" />
+    <result column="pictureUrl" jdbcType="VARCHAR" property="pictureUrl" />
+    <result column="onShowTime" jdbcType="TIMESTAMP" property="onShowTime" />
+    <result column="offshowTime" jdbcType="TIMESTAMP" property="offshowTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, isShow, description, pictureName, pictureUrl, onShowTime, offshowTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from banner
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from banner
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.Banner">
+    insert into banner (id, isShow, description, 
+      pictureName, pictureUrl, onShowTime, 
+      offshowTime)
+    values (#{id,jdbcType=INTEGER}, #{isShow,jdbcType=BIT}, #{description,jdbcType=VARCHAR}, 
+      #{pictureName,jdbcType=VARCHAR}, #{pictureUrl,jdbcType=VARCHAR}, #{onShowTime,jdbcType=TIMESTAMP}, 
+      #{offshowTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.Banner">
+    insert into banner
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="isShow != null">
+        isShow,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="pictureName != null">
+        pictureName,
+      </if>
+      <if test="pictureUrl != null">
+        pictureUrl,
+      </if>
+      <if test="onShowTime != null">
+        onShowTime,
+      </if>
+      <if test="offshowTime != null">
+        offshowTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isShow != null">
+        #{isShow,jdbcType=BIT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureName != null">
+        #{pictureName,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureUrl != null">
+        #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="onShowTime != null">
+        #{onShowTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offshowTime != null">
+        #{offshowTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <!-- 根据id修改其他字段 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.Banner">
+    update banner
+    <set>
+      <if test="isShow != null">
+        isShow = #{isShow,jdbcType=BIT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureName != null">
+        pictureName = #{pictureName,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureUrl != null">
+        pictureUrl = #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="onShowTime != null">
+        onShowTime = #{onShowTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offshowTime != null">
+        offshowTime = #{offshowTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.Banner">
+    update banner
+    set isShow = #{isShow,jdbcType=BIT},
+      description = #{description,jdbcType=VARCHAR},
+      pictureName = #{pictureName,jdbcType=VARCHAR},
+      pictureUrl = #{pictureUrl,jdbcType=VARCHAR},
+      onShowTime = #{onShowTime,jdbcType=TIMESTAMP},
+      offshowTime = #{offshowTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 分界线 -->
+<!-- 获取轮播列表 -->
+ <select id="getBannerList" resultMap="BaseResultMap">
+  select 
+  <include refid="Base_Column_List" />
+  from banner
+</select>
+</mapper>

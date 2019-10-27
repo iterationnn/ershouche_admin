@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.SaleOnLineDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.SaleOnLine">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="carDetailId" jdbcType="BIGINT" property="carDetailId" />
+    <result column="userId" jdbcType="BIGINT" property="userId" />
+    <result column="realName" jdbcType="VARCHAR" property="realName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="brandName" jdbcType="VARCHAR" property="brandName" />
+    <result column="seriesName" jdbcType="VARCHAR" property="seriesName" />
+    <result column="carName" jdbcType="VARCHAR" property="carName" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="oldPrice" jdbcType="DECIMAL" property="oldPrice" />
+    <result column="minimumPay" jdbcType="DECIMAL" property="minimumPay" />
+    <result column="mileage" jdbcType="DECIMAL" property="mileage" />
+    <result column="productYear" jdbcType="DATE" property="productYear" />
+    <result column="cityName" jdbcType="VARCHAR" property="cityName" />
+    <result column="transferNum" jdbcType="TINYINT" property="transferNum" />
+    <result column="usage" jdbcType="VARCHAR" property="usage" />
+    <result column="dcName" jdbcType="VARCHAR" property="dcName" />
+    <result column="dpName" jdbcType="VARCHAR" property="dpName" />
+    <result column="energyName" jdbcType="VARCHAR" property="energyName" />
+    <result column="levelName" jdbcType="VARCHAR" property="levelName" />
+    <result column="bsBox" jdbcType="VARCHAR" property="bsBox" />
+    <result column="driver" jdbcType="VARCHAR" property="driver" />
+    <result column="isHonest" jdbcType="BIT" property="isHonest" />
+    <result column="isLoan" jdbcType="BIT" property="isLoan" />
+    <result column="isqualified" jdbcType="BIT" property="isqualified" />
+    <result column="isPersonal" jdbcType="BIT" property="isPersonal" />
+    <result column="annualDate" jdbcType="DATE" property="annualDate" />
+    <result column="insuranceDate" jdbcType="DATE" property="insuranceDate" />
+    <result column="qualifiedDate" jdbcType="DATE" property="qualifiedDate" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="onSaleTime" jdbcType="TIMESTAMP" property="onSaleTime" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, carDetailId, userId, realName, phone, brandName, seriesName, carName, price, 
+    oldPrice, minimumPay, mileage, productYear, cityName, transferNum, usage, dcName, 
+    dpName, energyName, levelName, bsBox, driver, isHonest, isLoan, isqualified, isPersonal, 
+    annualDate, insuranceDate, qualifiedDate, createTime, onSaleTime, picture
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from saleOnLine
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from saleOnLine
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.SaleOnLine">
+    insert into saleOnLine (id, carDetailId, userId, 
+      realName, phone, brandName, 
+      seriesName, carName, price, 
+      oldPrice, minimumPay, mileage, 
+      productYear, cityName, transferNum, 
+      usage, dcName, dpName, 
+      energyName, levelName, bsBox, 
+      driver, isHonest, isLoan, isqualified, 
+      isPersonal, annualDate, insuranceDate, 
+      qualifiedDate, createTime, onSaleTime, 
+      picture)
+    values (#{id,jdbcType=BIGINT}, #{carDetailId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{realName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, 
+      #{seriesName,jdbcType=VARCHAR}, #{carName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{oldPrice,jdbcType=DECIMAL}, #{minimumPay,jdbcType=DECIMAL}, #{mileage,jdbcType=DECIMAL}, 
+      #{productYear,jdbcType=DATE}, #{cityName,jdbcType=VARCHAR}, #{transferNum,jdbcType=TINYINT}, 
+      #{usage,jdbcType=VARCHAR}, #{dcName,jdbcType=VARCHAR}, #{dpName,jdbcType=VARCHAR}, 
+      #{energyName,jdbcType=VARCHAR}, #{levelName,jdbcType=VARCHAR}, #{bsBox,jdbcType=VARCHAR}, 
+      #{driver,jdbcType=VARCHAR}, #{isHonest,jdbcType=BIT}, #{isLoan,jdbcType=BIT}, #{isqualified,jdbcType=BIT}, 
+      #{isPersonal,jdbcType=BIT}, #{annualDate,jdbcType=DATE}, #{insuranceDate,jdbcType=DATE}, 
+      #{qualifiedDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, #{onSaleTime,jdbcType=TIMESTAMP}, 
+      #{picture,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.SaleOnLine">
+    insert into saleOnLine
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="carDetailId != null">
+        carDetailId,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="realName != null">
+        realName,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="brandName != null">
+        brandName,
+      </if>
+      <if test="seriesName != null">
+        seriesName,
+      </if>
+      <if test="carName != null">
+        carName,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="oldPrice != null">
+        oldPrice,
+      </if>
+      <if test="minimumPay != null">
+        minimumPay,
+      </if>
+      <if test="mileage != null">
+        mileage,
+      </if>
+      <if test="productYear != null">
+        productYear,
+      </if>
+      <if test="cityName != null">
+        cityName,
+      </if>
+      <if test="transferNum != null">
+        transferNum,
+      </if>
+      <if test="usage != null">
+        usage,
+      </if>
+      <if test="dcName != null">
+        dcName,
+      </if>
+      <if test="dpName != null">
+        dpName,
+      </if>
+      <if test="energyName != null">
+        energyName,
+      </if>
+      <if test="levelName != null">
+        levelName,
+      </if>
+      <if test="bsBox != null">
+        bsBox,
+      </if>
+      <if test="driver != null">
+        driver,
+      </if>
+      <if test="isHonest != null">
+        isHonest,
+      </if>
+      <if test="isLoan != null">
+        isLoan,
+      </if>
+      <if test="isqualified != null">
+        isqualified,
+      </if>
+      <if test="isPersonal != null">
+        isPersonal,
+      </if>
+      <if test="annualDate != null">
+        annualDate,
+      </if>
+      <if test="insuranceDate != null">
+        insuranceDate,
+      </if>
+      <if test="qualifiedDate != null">
+        qualifiedDate,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="onSaleTime != null">
+        onSaleTime,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carDetailId != null">
+        #{carDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="seriesName != null">
+        #{seriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="carName != null">
+        #{carName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="oldPrice != null">
+        #{oldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="minimumPay != null">
+        #{minimumPay,jdbcType=DECIMAL},
+      </if>
+      <if test="mileage != null">
+        #{mileage,jdbcType=DECIMAL},
+      </if>
+      <if test="productYear != null">
+        #{productYear,jdbcType=DATE},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="transferNum != null">
+        #{transferNum,jdbcType=TINYINT},
+      </if>
+      <if test="usage != null">
+        #{usage,jdbcType=VARCHAR},
+      </if>
+      <if test="dcName != null">
+        #{dcName,jdbcType=VARCHAR},
+      </if>
+      <if test="dpName != null">
+        #{dpName,jdbcType=VARCHAR},
+      </if>
+      <if test="energyName != null">
+        #{energyName,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null">
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="bsBox != null">
+        #{bsBox,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null">
+        #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="isHonest != null">
+        #{isHonest,jdbcType=BIT},
+      </if>
+      <if test="isLoan != null">
+        #{isLoan,jdbcType=BIT},
+      </if>
+      <if test="isqualified != null">
+        #{isqualified,jdbcType=BIT},
+      </if>
+      <if test="isPersonal != null">
+        #{isPersonal,jdbcType=BIT},
+      </if>
+      <if test="annualDate != null">
+        #{annualDate,jdbcType=DATE},
+      </if>
+      <if test="insuranceDate != null">
+        #{insuranceDate,jdbcType=DATE},
+      </if>
+      <if test="qualifiedDate != null">
+        #{qualifiedDate,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onSaleTime != null">
+        #{onSaleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.SaleOnLine">
+    update saleOnLine
+    <set>
+      <if test="carDetailId != null">
+        carDetailId = #{carDetailId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="realName != null">
+        realName = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null">
+        brandName = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="seriesName != null">
+        seriesName = #{seriesName,jdbcType=VARCHAR},
+      </if>
+      <if test="carName != null">
+        carName = #{carName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="oldPrice != null">
+        oldPrice = #{oldPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="minimumPay != null">
+        minimumPay = #{minimumPay,jdbcType=DECIMAL},
+      </if>
+      <if test="mileage != null">
+        mileage = #{mileage,jdbcType=DECIMAL},
+      </if>
+      <if test="productYear != null">
+        productYear = #{productYear,jdbcType=DATE},
+      </if>
+      <if test="cityName != null">
+        cityName = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="transferNum != null">
+        transferNum = #{transferNum,jdbcType=TINYINT},
+      </if>
+      <if test="usage != null">
+        usage = #{usage,jdbcType=VARCHAR},
+      </if>
+      <if test="dcName != null">
+        dcName = #{dcName,jdbcType=VARCHAR},
+      </if>
+      <if test="dpName != null">
+        dpName = #{dpName,jdbcType=VARCHAR},
+      </if>
+      <if test="energyName != null">
+        energyName = #{energyName,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null">
+        levelName = #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="bsBox != null">
+        bsBox = #{bsBox,jdbcType=VARCHAR},
+      </if>
+      <if test="driver != null">
+        driver = #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="isHonest != null">
+        isHonest = #{isHonest,jdbcType=BIT},
+      </if>
+      <if test="isLoan != null">
+        isLoan = #{isLoan,jdbcType=BIT},
+      </if>
+      <if test="isqualified != null">
+        isqualified = #{isqualified,jdbcType=BIT},
+      </if>
+      <if test="isPersonal != null">
+        isPersonal = #{isPersonal,jdbcType=BIT},
+      </if>
+      <if test="annualDate != null">
+        annualDate = #{annualDate,jdbcType=DATE},
+      </if>
+      <if test="insuranceDate != null">
+        insuranceDate = #{insuranceDate,jdbcType=DATE},
+      </if>
+      <if test="qualifiedDate != null">
+        qualifiedDate = #{qualifiedDate,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onSaleTime != null">
+        onSaleTime = #{onSaleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.SaleOnLine">
+    update saleOnLine
+    set carDetailId = #{carDetailId,jdbcType=BIGINT},
+      userId = #{userId,jdbcType=BIGINT},
+      realName = #{realName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      brandName = #{brandName,jdbcType=VARCHAR},
+      seriesName = #{seriesName,jdbcType=VARCHAR},
+      carName = #{carName,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      oldPrice = #{oldPrice,jdbcType=DECIMAL},
+      minimumPay = #{minimumPay,jdbcType=DECIMAL},
+      mileage = #{mileage,jdbcType=DECIMAL},
+      productYear = #{productYear,jdbcType=DATE},
+      cityName = #{cityName,jdbcType=VARCHAR},
+      transferNum = #{transferNum,jdbcType=TINYINT},
+      usage = #{usage,jdbcType=VARCHAR},
+      dcName = #{dcName,jdbcType=VARCHAR},
+      dpName = #{dpName,jdbcType=VARCHAR},
+      energyName = #{energyName,jdbcType=VARCHAR},
+      levelName = #{levelName,jdbcType=VARCHAR},
+      bsBox = #{bsBox,jdbcType=VARCHAR},
+      driver = #{driver,jdbcType=VARCHAR},
+      isHonest = #{isHonest,jdbcType=BIT},
+      isLoan = #{isLoan,jdbcType=BIT},
+      isqualified = #{isqualified,jdbcType=BIT},
+      isPersonal = #{isPersonal,jdbcType=BIT},
+      annualDate = #{annualDate,jdbcType=DATE},
+      insuranceDate = #{insuranceDate,jdbcType=DATE},
+      qualifiedDate = #{qualifiedDate,jdbcType=DATE},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      onSaleTime = #{onSaleTime,jdbcType=TIMESTAMP},
+      picture = #{picture,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

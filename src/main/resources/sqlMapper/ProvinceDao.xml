@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgc.che168_admin.dao.ProvinceDao">
+  <resultMap id="BaseResultMap" type="com.kgc.che168_admin.pojo.Province">
+    <id column="proID" jdbcType="INTEGER" property="proID" />
+    <result column="proName" jdbcType="VARCHAR" property="proName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    proID, proName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from province
+    where proID = #{proID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from province
+    where proID = #{proID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kgc.che168_admin.pojo.Province">
+    insert into province (proID, proName)
+    values (#{proID,jdbcType=INTEGER}, #{proName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kgc.che168_admin.pojo.Province">
+    insert into province
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proID != null">
+        proID,
+      </if>
+      <if test="proName != null">
+        proName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proID != null">
+        #{proID,jdbcType=INTEGER},
+      </if>
+      <if test="proName != null">
+        #{proName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.che168_admin.pojo.Province">
+    update province
+    <set>
+      <if test="proName != null">
+        proName = #{proName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where proID = #{proID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kgc.che168_admin.pojo.Province">
+    update province
+    set proName = #{proName,jdbcType=VARCHAR}
+    where proID = #{proID,jdbcType=INTEGER}
+  </update>
+</mapper>
